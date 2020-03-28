@@ -1,0 +1,11 @@
+.FieldInfo{
+    color: rgba(100, 200, 200, 70%);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:1.2em;
+}
+.CommentBlock{
+    background-color: #f6f7f9;
+}
+.futer{
+    position: absolute; bottom:0; width:100%;
+}

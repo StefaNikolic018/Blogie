@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/36c359f9b8.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <title>Basic</title>
+</head>
+<body>
+    <!--NAVBAR-->
+    <div style="height: 5px; background-color: slategray"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand"><i class="fas fa-dollar-sign" style="color:gold"></i>tefa<i class="fab fa-neos" style="color:steelblue"></i>ikolic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcol">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="profil.ph" class="nav-link"><i class="fas fa-user-circle" style="color:steelblue"></i></i> Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.php" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="postovi.php" class="nav-link">Postovi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="kategorije.php" class="nav-link">Kategorije</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.php" class="nav-link">Admin menadzer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="komentari.php" class="nav-link">Komentari</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.php?stranica=1" class="nav-link">Blog</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a style="color:tomato"href="logout.php" class="nav-link"><i class="fas fa-sign-out-alt"></i> LogOut</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div style="height: 5px; background-color:slategray"></div>
+    <!--NAVBAR KRAJ-->
+
+    <!--HEADER-->
+    <header class="bg-dark text-white py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><i class="fas fa-text-height"></i>Basic</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--HEADER KRAJ-->
+
+    <!--FOOTER-->
+    <div style="height: 5px; background-color:slategray"></div>
+<footer class="bg-dark text-white pt-2">
+    <div class="container">
+        <div class="row">
+            <div class="col"><p class="lead text-center">Theme by | <i class="fas fa-dollar-sign" style="color:gold"></i>tefa<i class="fab fa-neos" style="color:steelblue"></i>ikolic | &copy; All rights reserved | <span id="year"> </span></p></div>
+            
+        </div>
+    </div>
+</footer>
+<div style="height: 5px; background-color:slategray"></div>
+<!--FOOTER KRAJ-->
+<script>$('#year').text(new Date().getFullYear());</script>
+</body>
+</html>

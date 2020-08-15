@@ -17,10 +17,9 @@ if (isset($_GET["id"])) {
     } else {
 
         $admin = $_SESSION["korisnicko"];
-        $sql = "UPDATE komentari SET status='off', dozvoljenod='$admin' WHERE id='$id'";
+        $sql = "SET @p0='off', @p1='".$admin."', @p2=".$id.";CALL p_odobravanjeKomentara(@p0,@p1,@p2);";
         $exec = $con->query($sql);
-        $stmt = $exec->execute();
-        if ($stmt) {
+        if ($exec) {
             $_SESSION["SuccessMsg"] = "Neodobren komentar!";
             Redirect_to('komentari.php');
         } else {

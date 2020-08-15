@@ -22,7 +22,7 @@ if(isset($_POST['posalji'])){
         Redirect_to("kategorije.php");
     }
     else{
-        $sql="INSERT INTO kategorije(naslov,autor,datumvreme) VALUES(:naslov,:autor,:vreme)";
+        $sql="INSERT INTO kategorije(naslov,autor,vremedatum) VALUES(:naslov,:autor,:vreme)";
         $stmt=$con->prepare($sql);
         $stmt->bindValue(':naslov',$naslov);
         $stmt->bindValue(':autor',$admin);
@@ -112,12 +112,12 @@ if(isset($_POST['posalji'])){
                 
                 <?php 
                 $con;
-                $sql='SELECT * FROM kategorije ORDER BY id desc';
+                $sql='CALL p_listanjeKategorija()';
                 $exec=$con->query($sql);
                 $br=0;
                 while($DataRows=$exec->fetch()){
                     $id=$DataRows["id"];
-                    $vreme=$DataRows["datumvreme"];
+                    $vreme=$DataRows["vremedatum"];
                     $ime=$DataRows["autor"];
                     $naslov=$DataRows["naslov"];
                     $br++;

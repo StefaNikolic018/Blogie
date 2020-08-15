@@ -57,14 +57,15 @@ background: linear-gradient(90deg, rgba(52,58,64,0.9837068616509104) 13%, rgba(0
                 <!-- POSTOVI START -->
                 <div class="col-md-6 " >
                     
-                        <?php 
+                        <?php
                         $con;
-                        $sql="SELECT COUNT(id) AS br FROM postovi WHERE autor=:autor";
-                        $stmt=$con->prepare($sql);
-                        $stmt->bindValue(':autor',$korisnicko);
+                        $sql="SELECT f_brPostova(:korisnicko)";
+                        $stmt = $con->prepare($sql);
+                        $stmt->bindValue(':korisnicko', $korisnicko);
                         $stmt->execute();
-                        $rez=$stmt->fetch(); ?>
-                        <h4 class="text-center" style="font-family: 'Archivo Black', sans-serif;text-shadow:0 0 1px white,0 0 1px white,0 0 1px white,0 0 1px white;">Postovi (<?php echo array_shift($rez); ?>)</h4>
+                        $br=$stmt->fetch();
+                        $br=array_shift($br); ?>
+                        <h4 class="text-center" style="font-family: 'Archivo Black', sans-serif;text-shadow:0 0 1px white,0 0 1px white,0 0 1px white,0 0 1px white;">Postovi (<?php echo $br; ?>)</h4>
                 <div class="mb-2">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -132,12 +133,13 @@ background: linear-gradient(0deg, rgba(127,127,128,0.6979925759366247) 0%, rgba(
             </div>
             
             <div class="col-sm-3 mt-3" >
-                <div class="card mb-3 bg-dark rounded" style="box-shadow:0 0 0,0 0 5px black,0 0 0,0 0 10px black;">
-                    <div class="card-header bg-dark text-white">
+                <div class="card mb-3 rounded bg-dark" style="box-shadow:0 0 0,0 0 5px black,0 0 0,0 0 10px black;">
+                    <div class="card-header bg-dark text-light">
                         <h3 class="text-center" style="font-family: 'Archivo Black', sans-serif;text-shadow:0 0 2px black,0 0 2px black,0 0 2px black,0 0 2px black;">Biografija</h3>
                     </div>
-                    <div class="card-body bg-light" style="height:350px; max-height:350px;">
+                    <div class="card-body text-light" style="height:350px; max-height:350px;">
                         <?php echo $admin["bio"]; ?>
+                        <hr>
                     </div>
                 </div>
             </div>

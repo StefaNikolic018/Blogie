@@ -88,7 +88,7 @@ if(isset($_POST["posalji"])){
         <div class="container">
             <div class="row">
                 <div class="col-md-12" style="color:#b7d5d4">
-                    <h1 class="text-center" style="font-family:'Archivo Black',sans-serif;" ><i class="fas fa-user" style="color:steelblue"></i> <?php echo $admin["korisnickoime"];?></h1>
+                    <h1 class="text-center" style="font-family:'Archivo Black',sans-serif;" ><i class="fas fa-user-circle" style="color:steelblue"></i> Profil</h1>
                 </div>
             </div>
         </div>
@@ -113,12 +113,13 @@ if(isset($_POST["posalji"])){
                 <hr>
                 <small><p class="text-center">Dodat: <?php echo $admin["vremedatum"];?></p></small>
             </div>
-            <div class="card-body " style="background:#b7d5d4">
+            <div class="card-body bg-dark text-light">
                 <img src="Uploads/<?php echo $admin["slika"];?>" alt="slika" class="img-fluid d-block mb-3 rounded" style="border:2px solid #444C4E">
                 <small class="text-muted"><?php echo $admin["zvanje"];?></small>
                 <hr>
                 <div class=" px-2"> 
                     <?php echo $admin["bio"]; ?>
+                    <hr>
                 </div>
             </div>
         </div>
@@ -181,7 +182,9 @@ if(isset($_POST["posalji"])){
             <?php 
             $con;
             $autor=$_SESSION["korisnicko"];
-            $sql="SELECT * FROM postovi ORDER BY id desc";
+            $sql="SELECT * FROM postovi WHERE autor='$autor' ORDER BY id desc";
+            // $sql="SET @p0='".$autor."'; CALL p_listanjePostova(@p0)";
+
             $br=0;
             $stmt=$con->query($sql);
             while($DataRows = $stmt->fetch()){
@@ -193,7 +196,6 @@ if(isset($_POST["posalji"])){
                 $slika      =$DataRows["slika"];
                 $komentar   =$DataRows["post"];
                 $br++;
-                if($admin==$autor){
             ?>
             <tr>
                 <td><?php echo $br; ?></td>
@@ -234,7 +236,6 @@ if(isset($_POST["posalji"])){
                        &nbsp; <span class="badge badge-danger"><?php kom('off',$id); ?></span></th>
             </tr>
             <?php
-                }
                     } ?>
             </tbody>
         </table>

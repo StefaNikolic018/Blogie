@@ -1,2 +1,2 @@
-<?php include("funkcije.php"); ?>
-<?php Redirect_to("login.php"); ?>
+<?php require_once("Includes/funkcije.php"); ?>
+<?php Redirect_to("blog.php?stranica=1"); ?>

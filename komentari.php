@@ -116,7 +116,8 @@ potvrda_login();
                 
                 <?php 
                 $con;
-                $sql='SELECT * FROM komentari WHERE status="on" ORDER BY id desc';
+                // Pogled v_komentari prikazuje samo komentare koji imaju status ON
+                $sql='SELECT * FROM v_komentari ORDER BY id desc';
                 $exec=$con->query($sql);
                 $br=0;
                 while($DataRows=$exec->fetch()){

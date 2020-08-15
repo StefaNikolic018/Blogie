@@ -1,10 +1,9 @@
-
-    <!-- NAVBAR -->
-    <?php include("javninavbar.php"); ?>
+ <!-- NAVBAR -->
+<?php include("javninavbar.php"); 
+ob_start();?>
 <title>Full post </title>
-    <!-- NAVBAR KRAJ -->
-
-    <?php
+<!-- NAVBAR KRAJ -->
+<?php
 $con;
 $pretragaid = $_GET["id"];
 $sql = "SELECT * FROM postovi";
@@ -21,7 +20,8 @@ while ($niz = $stmt->fetch()) {
 }
 if (!$postoji) {
     $_SESSION["ErrorMsg"] = "Pogrešan zahtev !";
-    Redirect_to("blog.php?stranica=1");
+	Redirect_to("blog.php?stranica=1");
+   
 }
 
 if (isset($_POST["posalji"])) {
@@ -59,8 +59,6 @@ if (isset($_POST["posalji"])) {
     }
 }
 ?>
-
-
     <div class="container mb-3 mt-3 rounded" style="  background: rgb(70,130,180);
 background: radial-gradient(circle, rgba(70,130,180,0.3030345927433473) 43%, rgba(255,215,0,0.5047152650122548) 100%);  ">
         <div class="row">
@@ -107,15 +105,16 @@ background: radial-gradient(circle, rgba(70,130,180,0.3030345927433473) 43%, rgb
                 ?>
                     <?php
                     $con;
-                    $sql = "SELECT COUNT(id) AS br FROM komentari WHERE postid=$pretragaid AND status='on'";
+                    $sql = "SELECT f_brKomentara($pretragaid)";
                     $stmt = $con->query($sql);
                     $br = $stmt->fetch();
+                    $br= array_shift($br);
                     ?>
                     <br>
                     <div class="card" style="background: rgb(55,62,64);
 background: radial-gradient(circle, rgba(55,62,64,0.8520542005864846) 21%, rgba(183,213,212,1) 100%); ">
                         <div class="card-body">
-                            <h4 class="card-title" style="font-family:'Archivo Black', sans-serif"><?php echo htmlentities($naslov); ?><span style="float:right;" class="badge badge-dark text-light"><i class="fas fa-comments"></i> <?php echo $br["br"]; ?> </span></h4>
+                            <h4 class="card-title" style="font-family:'Archivo Black', sans-serif"><?php echo htmlentities($naslov); ?><span style="float:right;" class="badge badge-dark text-light"><i class="fas fa-comments"></i> <?php echo $br; ?> </span></h4>
                             <hr>
                             <h5 class="text-light"><span class="btn-warning">&nbsp;</span> Napisao: <a style="font-family:'Archivo Black', sans-serif;color: steelblue;text-shadow: 0 0 0.5px #373e40, 0 0 0.5px #373e40, 0 0 0.5px #373e40, 0 0 0.5px #373e40;" href="javniprofil.php?korisnicko=<?php echo $autor; ?>"><?php echo $autor; ?></a> <span style="float:right" class="text-muted"><?php echo htmlentities($vremedatum); ?> </span> </h5>
                             <hr>
@@ -135,11 +134,11 @@ background: radial-gradient(circle, rgba(55,62,64,0.8520542005864846) 21%, rgba(
                 <!-- KOMENTARI START -->
 
                 <!-- FETCH KOMENTARA -->
-                <span class="FieldInfo" style="color: steelblue"><i class="fas fa-comment"></i> Komentari (<?php echo $br["br"]; ?>) :</span>
+                <span class="FieldInfo" style="color: steelblue"><i class="fas fa-comment"></i> Komentari (<?php echo $br; ?>) :</span>
                 <hr>
                 <?php
                 $con;
-                $sql = "SELECT * FROM komentari WHERE postid='$pretragaid' AND status='on'";
+                $sql = "SELECT * FROM v_komentari WHERE postid='$pretragaid'";
                 $stmt = $con->query($sql);
                 while ($DataRows = $stmt->fetch()) {
                     $ime = $DataRows["ime"];
@@ -169,6 +168,8 @@ background: radial-gradient(circle, rgba(55,62,64,0.8520542005864846) 21%, rgba(
 
                 <?php } ?>
                 <!-- FETCH KOMENTARA KRAJ -->
+
+                <!-- KOMENTARISANJE START -->
                 <div>
 
                     <form action="fullpost.php?id=<?php echo $pretragaid; ?>" method="post">

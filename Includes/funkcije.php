@@ -1,8 +1,10 @@
 <?php 
+
 function Redirect_to($lokacija) {
     header("Location:".$lokacija);
     exit;
 }
+
 function Korisnicko_postoji($korisnicko){
     require_once("Includes/db.php");
     global $con;
@@ -43,10 +45,10 @@ function kom($izbor,$id){
     $id=$id;
     $i=$izbor;
     if($i=='off'){
-        $sql="SELECT COUNT(*) FROM komentari WHERE status='off' AND postid=$id";
+        $sql="SELECT COUNT(*) FROM komentari WHERE status='$i' AND postid=$id";
     }
     elseif($i=='on'){
-        $sql="SELECT COUNT(*) FROM komentari WHERE status='on' AND postid=$id";
+        $sql="SELECT COUNT(*) FROM komentari WHERE status='$i' AND postid=$id";
     }
     
     $stmt=$con->query($sql);

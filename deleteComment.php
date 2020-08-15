@@ -15,10 +15,10 @@ if (isset($_GET["id"])) {
         $_SESSION["ErrorMsg"] = "Pogrešan zahtev!";
         Redirect_to("komentari.php");
     } else {
-        $sql = "DELETE FROM komentari WHERE id='$id'";
-        $exec = $con->query($sql);
-        $stmt = $exec->execute();
-        if ($stmt) {
+        $sql = "SET @p0=".$id."; CALL p_brisanjeKomentara(@p0);";
+        $stmt = $con->query($sql);
+        $exec = $stmt->execute();
+        if ($exec) {
             $_SESSION["SuccessMsg"] = "Obrisan komentar!";
             Redirect_to('komentari.php');
         } else {

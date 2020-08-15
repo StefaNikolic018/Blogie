@@ -184,11 +184,7 @@ background: radial-gradient(circle, rgba(250,250,250,5) 50%, rgba(55,62,64,0.852
                                 </div>
                                 <input type="password" class="form-control" name="lozinka" id="password" placeholder="Unesite vasu lozinku">
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="checkbox">
-                                <input type="checkbox" name="upamti"> <label for="checkbox"> Upamti me</label>
-                                </div>
-                            </div>
+
                         </div>
                         <input type="submit" name="posalji" class="btn btn-block" style="background:#b7d5d4" value="Login">
                     </form>
